@@ -1,5 +1,7 @@
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   name: "BaseButton",
   props: {
     disabled: {
@@ -9,7 +11,7 @@ export default {
     color: {
       type: String,
       default: "primary",
-      validator: (value) => {
+      validator: (value: string): boolean => {
         return ["primary", "warn", "danger"].includes(value);
       },
     },
@@ -19,18 +21,18 @@ export default {
     }
   },
   computed: {
-    colorClass() {
-      return `btn-${this.color}`;
+    colorClass(): string {
+      return `btn-${this.$props.color}`;
     },
   },
   methods: {
-    handleClick(event) {
+    handleClick(event: Event) {
       if (this.disabled) {
         event.preventDefault();
       }
     },
   },
-};
+});
 </script>
 
 <template>

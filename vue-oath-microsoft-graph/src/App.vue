@@ -6,17 +6,17 @@
   </div>
 </template>
 
-<script>
-import HomePage from './pages/HomePage.vue'
-import BaseLayout from './layouts/BaseLayout.vue'
+<script lang="ts">
+import BaseLayout from "@/layouts/BaseLayout.vue";
+import HomePage from "@/pages/HomePage.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
+    BaseLayout,
     HomePage,
-    BaseLayout
-  }
-}
+  },
+};
 </script>
 
 <style>

@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import BaseButton from "@/components/BaseButton.vue";
 
-export default {
+export default defineComponent({
   name: "AsyncButton",
   components: {
     BaseButton,
@@ -16,7 +17,7 @@ export default {
     color: {
       type: String,
       default: "primary",
-      validator: (value) => {
+      validator: (value: string): boolean => {
         return ["primary", "warn", "danger"].includes(value);
       },
     },
@@ -30,14 +31,14 @@ export default {
 
   methods: {
     handleClick() {
-      const originalOnClick = /** @type {() => Promise<void>} */ (this.$attrs.onClick);
+      const originalOnClick = this.$attrs.onClick as unknown as () => Promise<void>;
       this.isPending = true;
       originalOnClick().finally(() => {
         this.isPending = false;
       });
     }
   }
-}
+});
 </script>
 
 <template>

@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
 import BaseButton from "@/components/BaseButton.vue";
 import AsyncButton from "@/components/AsyncButton.vue";
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   name: "HomePage",
   components: {
     AsyncButton,
@@ -15,9 +16,9 @@ export default {
       console.log("Clicked " + this.clickCount + " times");
     },
 
-    handleAsyncClick() {
+    handleAsyncClick(): Promise<void> {
       this.clickCounter();
-      return new Promise((resolve) => {
+      return new Promise<void>((resolve) => {
         setTimeout(() => {
           resolve();
         }, this.clickCount * 1000);
@@ -25,12 +26,12 @@ export default {
     },
   },
 
-  data() {
+  data(): { clickCount: number } {
     return {
       clickCount: 0,
-    }
+    };
   }
-}
+});
 </script>
 
 <template>

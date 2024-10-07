@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import HomePage from "@/pages/HomePage.vue";
 import BaseButton from "@/components/BaseButton.vue";
 

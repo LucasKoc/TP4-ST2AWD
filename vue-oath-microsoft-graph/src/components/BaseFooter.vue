@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 export default {
   name: "BaseFooter"
 }
@@ -20,8 +20,8 @@ export default {
   background-color: var(--vt-c-brand-dark);
 
   height: 5vh;
-  width: 100%;
   left: 0;
+  right: 0;
   bottom: 0;
   position: absolute;
 }
