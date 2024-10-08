@@ -1,11 +1,13 @@
 <script lang="ts">
 import HomePage from "@/pages/HomePage.vue";
 import BaseButton from "@/components/BaseButton.vue";
+import SignInButton from "@/components/SignInButton.vue";
 
 export default {
   name: "BaseHeader",
   components: {
-    BaseButton
+    BaseButton,
+    SignInButton
   },
   computed: {
     HomePage() {
@@ -25,10 +27,7 @@ export default {
 
   <div class="header-container">
     <div>
-      <p>Not Logged Yet</p>
-    </div>
-    <div>
-      <font-awesome-icon :icon="['fas', 'user']" :style="{color: 'white'}" />
+      <SignInButton role="button" color="primary" icon="user">Sign in</SignInButton>
     </div>
   </div>
 </div>
