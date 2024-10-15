@@ -50,5 +50,13 @@ Also, we need to modify the Manifest file of the application. On this line, we n
 ```
 
 Here's the result:
-![Login page from Microsoft MAS](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-18%20at%2017.01.27.png "Our login page")
-![Logged as](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-18%20at%2017.12.00.png "Logged as user")
+![Login page from Microsoft MAS](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-08%20at%2017.01.27.png "Our login page")
+![Logged as](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-08%20at%2017.12.00.png "Logged as user")
+
+### Exercise 2: state management with props/events
+
+We added props and event to communicate between components. Event: `userChanged`  and Prop: `user`.
+`microsoftGraph.ts` has been updated to fix the error when the user log, refresh the page and couldn't log again.
+
+Here's the result:
+![Logged as](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-15%20at%2021.36.18.png "Logged as user")

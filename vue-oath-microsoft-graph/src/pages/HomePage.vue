@@ -10,6 +10,13 @@ export default defineComponent({
     BaseButton,
   },
 
+  props: {
+    user: {
+      type: Object,
+      required: false,
+    },
+  },
+
   methods: {
     clickCounter () {
       this.clickCount++;
@@ -64,6 +71,7 @@ export default defineComponent({
       <async-button color="primary" @click="handleAsyncClick">Click Me (Disabled for 1s/click)</async-button>
 
       <p>Clicked {{ clickCount }} times</p>
+      <p v-if="user">User connected: {{ user.username }}</p>
     </div>
   </div>
 </template>

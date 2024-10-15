@@ -1,20 +1,26 @@
 <script lang="ts">
-import HomePage from "@/pages/HomePage.vue";
 import BaseButton from "@/components/BaseButton.vue";
 import SignInButton from "@/components/SignInButton.vue";
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent ({
   name: "BaseHeader",
   components: {
     BaseButton,
-    SignInButton
+    SignInButton,
   },
-  computed: {
-    HomePage() {
-      return HomePage
-    }
-  }
-}
+  props: {
+    user: {
+      type: Object,
+      required: false,
+    },
+  },
+  methods: {
+    handleUserChanged(newUser: Object) {
+      this.$emit('userChanged', newUser);
+    },
+  },
+});
 </script>
 
 <template>
@@ -27,7 +33,7 @@ export default {
 
   <div class="header-container">
     <div>
-      <SignInButton role="button" color="primary" icon="user">Sign in</SignInButton>
+      <SignInButton role="button" color="primary" icon="user" :user="user" @userChanged="handleUserChanged">Sign in</SignInButton>
     </div>
   </div>
 </div>

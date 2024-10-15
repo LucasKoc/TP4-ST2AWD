@@ -21,6 +21,10 @@ export default defineComponent({
         return ["primary", "warn", "danger"].includes(value);
       },
     },
+    icon: {
+      type: String,
+      default: "",
+    },
   },
 
   data () {
@@ -42,13 +46,14 @@ export default defineComponent({
 </script>
 
 <template>
-    <base-button :disabled="disabled || isPending" @click.stop.prevent="handleClick" :color="color"> <slot/>
+    <base-button :disabled="disabled || isPending" @click.stop.prevent="handleClick" :icon="icon" :color="color">
       <font-awesome-icon class="icon" v-if="isPending" :icon="['fas', 'circle-notch']" :style="{color: 'white'}" pulse/>
+      <slot/>
     </base-button>
 </template>
 
 <style scoped>
 .icon {
-  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 </style>

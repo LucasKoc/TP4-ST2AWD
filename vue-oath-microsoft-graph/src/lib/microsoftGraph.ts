@@ -17,8 +17,11 @@ const msalInstance = new msal.PublicClientApplication({
 })
 
 export async function initializeMsalInstance() {
-    if (!msalInstance.getActiveAccount()) {
+    try {
         await msalInstance.initialize();
+    } catch (error) {
+        console.error('Error initializing MSAL instance:', error);
+        throw error;
     }
 }
 
