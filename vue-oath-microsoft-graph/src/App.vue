@@ -1,15 +1,16 @@
 <template>
   <div>
-    <base-layout :user="user" @userChanged="handleUserChanged" >
-      <home-page :user="user"/>
+    <base-layout>
+      <home-page/>
     </base-layout>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
 import BaseLayout from "@/layouts/BaseLayout.vue";
 import HomePage from "@/pages/HomePage.vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   name: "App",
@@ -17,15 +18,13 @@ export default defineComponent({
     BaseLayout,
     HomePage,
   },
-  data() {
+  setup() {
+    const store = useStore();
+    const user = computed(() => store.state.user);
+
     return {
-      user: null as Object | null,
+      user,
     };
-  },
-  methods: {
-    handleUserChanged(newUser: Object) {
-      this.user = newUser;
-    },
   },
 });
 </script>

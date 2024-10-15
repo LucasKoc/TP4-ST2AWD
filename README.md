@@ -60,3 +60,26 @@ We added props and event to communicate between components. Event: `userChanged`
 
 Here's the result:
 ![Logged as](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-15%20at%2021.36.18.png "Logged as user")
+
+### Question 3: While being a well-working solution, it suffers from maintainability issues. Please expose and discuss them.
+
+The solution suffers from maintainability issues because it is not scalable.
+If we want to add more components that need to communicate with each other, we will have to pass props and events between all the components.
+This will make the code harder to maintain and understand.
+Also, if we want to change the structure of the components, we will have to change all the props and events passed between the components.
+
+### Exercise 3 and Question 4 skiped as subject preconizes to skip them.
+
+### Exercise 4: state management with a store
+
+First of all, we need to install the Vuex package. To do this, we need to run the following command in the terminal:
+
+```bash
+npm install vuex@next
+```
+
+Vuex has been added to the project. We created a store at `src/store/index.ts`, added the `user` state to the store, and imported at `main.ts`.
+Props and event related to `user` has been removed in all components and replaced by the store when needed
+
+Here's the result:
+![Logged as](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-15%20at%2022.36.55.png "Logged as user from store")

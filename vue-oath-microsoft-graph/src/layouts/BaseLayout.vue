@@ -9,23 +9,12 @@ export default defineComponent ({
     BaseHeader,
     BaseFooter,
   },
-  props: {
-    user: {
-      type: Object,
-      required: false,
-    },
-  },
-  methods: {
-    handleUserChanged(newUser: Object) {
-      this.$emit('userChanged', newUser);
-    },
-  },
 });
 </script>
 
 <template>
   <div>
-    <base-header :user="user" @userChanged="handleUserChanged"/>
+    <base-header/>
     <slot></slot>
     <base-footer />
   </div>

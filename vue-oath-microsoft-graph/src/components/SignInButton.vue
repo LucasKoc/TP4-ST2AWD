@@ -1,7 +1,7 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
 import { signInAndGetUser } from '@/lib/microsoftGraph';
-import { AccountInfo } from '@azure/msal-browser';
+import { useStore } from 'vuex';
 import AsyncButton from "@/components/AsyncButton.vue";
 
 export default defineComponent({
@@ -9,16 +9,7 @@ export default defineComponent({
   components: {
     AsyncButton,
   },
-  data() {
-    return {
-      localUser: this.user as AccountInfo | null,
-    };
-  },
   props: {
-    user: {
-      type: Object as () => AccountInfo | null,
-      default: null,
-    },
     disabled: {
       type: Boolean,
       default: false,
@@ -33,24 +24,31 @@ export default defineComponent({
     icon: {
       type: String,
       default: "",
-    }
+    },
   },
-  methods: {
-    async handleSignIn() {
+  setup() {
+    const store = useStore();
+    const user = computed(() => store.state.user);
+
+    const handleSignIn = async () => {
       try {
         const newUser = await signInAndGetUser();
-        this.localUser = newUser;
-        this.$emit('userChanged', newUser);
+        store.commit('setUser', newUser);
       } catch (error) {
         console.error('Error during sign-in:', error);
       }
-    },
+    };
+
+    return {
+      user,
+      handleSignIn,
+    };
   },
 });
 </script>
 
 <template>
-  <async-button role="button" :color="color" @click="handleSignIn" :disabled="disabled" :icon="icon"> {{ localUser ? "Signed as " + localUser.username : "Sign in" }}</async-button>
+  <async-button role="button" :color="color" @click="handleSignIn" :disabled="disabled" :icon="icon"> {{ user ? "Signed as " + user.username : "Sign in" }}</async-button>
 </template>
 
 <style scoped>

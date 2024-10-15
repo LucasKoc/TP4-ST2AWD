@@ -1,7 +1,8 @@
 <script lang="ts">
 import BaseButton from "@/components/BaseButton.vue";
 import AsyncButton from "@/components/AsyncButton.vue";
-import { defineComponent } from 'vue';
+import { defineComponent, computed, ref } from 'vue';
+import { useStore } from 'vuex';
 
 export default defineComponent({
   name: "HomePage",
@@ -10,34 +11,32 @@ export default defineComponent({
     BaseButton,
   },
 
-  props: {
-    user: {
-      type: Object,
-      required: false,
-    },
-  },
+  setup() {
+    const store = useStore();
+    const user = computed(() => store.state.user);
 
-  methods: {
-    clickCounter () {
-      this.clickCount++;
-      console.log("Clicked " + this.clickCount + " times");
-    },
+    const clickCount = ref(0);
 
-    handleAsyncClick(): Promise<void> {
-      this.clickCounter();
+    const clickCounter = () => {
+      clickCount.value++;
+      console.log("Clicked " + clickCount.value + " times");
+    };
+
+    const handleAsyncClick = (): Promise<void> => {
+      clickCounter();
       return new Promise<void>((resolve) => {
         setTimeout(() => {
           resolve();
-        }, this.clickCount * 1000);
+        }, clickCount.value * 1000);
       });
-    },
-  },
-
-  data(): { clickCount: number } {
-    return {
-      clickCount: 0,
     };
-  }
+
+    return {
+      user,
+      clickCount,
+      handleAsyncClick,
+    };
+  },
 });
 </script>
 

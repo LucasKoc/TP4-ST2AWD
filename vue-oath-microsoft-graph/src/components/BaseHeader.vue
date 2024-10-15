@@ -9,17 +9,6 @@ export default defineComponent ({
     BaseButton,
     SignInButton,
   },
-  props: {
-    user: {
-      type: Object,
-      required: false,
-    },
-  },
-  methods: {
-    handleUserChanged(newUser: Object) {
-      this.$emit('userChanged', newUser);
-    },
-  },
 });
 </script>
 
@@ -33,7 +22,7 @@ export default defineComponent ({
 
   <div class="header-container">
     <div>
-      <SignInButton role="button" color="primary" icon="user" :user="user" @userChanged="handleUserChanged">Sign in</SignInButton>
+      <SignInButton role="button" color="primary" icon="user">Sign in</SignInButton>
     </div>
   </div>
 </div>
