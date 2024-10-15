@@ -83,3 +83,25 @@ Props and event related to `user` has been removed in all components and replace
 
 Here's the result:
 ![Logged as](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-15%20at%2022.36.55.png "Logged as user from store")
+
+### Question 5: Build a comparison table between the various state management strategies available, especially about pro and cons. Optionally, feel free to explore other ways not covered in that tutorial.
+
+| Strategy                            | Pros                                                                                        | Cons                                                                  |
+|-------------------------------------|---------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
+| Props/Events                        | Easy to implement<br/>Clear parent-child data flow<br/>No additional libraries required.    | Not scalable<br/>Need event to update parent                          |
+| Store                               | Scalable<br/>Predictable state changes via mutations<br/> Well-integrated with Vue DevTools | More complex to implement                                             |
+| Composition API with Reactive State | More flexible<br/>No need for external libraries<br/>Cleaner code                           | More complex to implement<br/>Not suitable for very large application |
+
+### Question 6: Imagine a developer in your team suggests to exclusively manage the state with stores. Therefore, it recommends not to rely on props and provide anymore. Would you accept this? An argued answer is expected.
+
+I would not prefer to exclusively manage the state with stores. There's some cases where using props is more appropriate than using a store (eg. global data that has not to be shared between components).
+Over reliance on stores can lead to performance issues and make the code harder to maintain. Every state change in the store can trigger re-renders in all components that depend on that state, which might not be efficient for frequently changing data.
+
+### Exercise 5: add vue-router dependency
+
+To add the vue-router dependency, we need to run the following command in the terminal:
+
+```bash
+npm install vue-router@4
+```
+
