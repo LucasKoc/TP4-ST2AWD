@@ -124,3 +124,14 @@ Here's the result:
 
 ![Updated Header](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-16%20at%2016.10.38.png "Updated Header")
 
+### Question 7: What is the performance difference between <a> and <router-link>?
+
+- `<a>` is a standard HTML element that is used to create hyperlinks. When you click on a link created with `<a>`, the browser will make a full page reload.
+- `<router-link>` is a component provided by Vue Router that is used to create links between pages in a Vue application. When you click on a link created with `<router-link>`, the Vue Router will update the URL in the browser without making a full page reload, and will render only the component associated with the new route.
+
+The performance difference between `<a>` and `<router-link>` is that `<router-link>` is faster because it does not require a full page reload. This makes the navigation between pages in a Vue application smoother and faster.
+
+### Exercise 8: add guards for authenticated routes
+
+`src/router/index.ts` has been updated to add guards for authenticated routes.
+We ensure that the user is authenticated before accessing the Conversations page.
