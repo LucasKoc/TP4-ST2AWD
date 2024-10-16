@@ -2,12 +2,24 @@
 import BaseButton from "@/components/BaseButton.vue";
 import SignInButton from "@/components/SignInButton.vue";
 import { defineComponent } from 'vue';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 
 export default defineComponent ({
   name: "BaseHeader",
   components: {
     BaseButton,
     SignInButton,
+  },
+  setup() {
+    const store = useStore();
+    const user = computed(() => store.state.user);
+    const isLoggedIn = computed(() => user.value !== null);
+
+    return {
+      user,
+      isLoggedIn
+    };
   },
 });
 </script>
@@ -16,7 +28,17 @@ export default defineComponent ({
 <div id="header">
   <div class="header-container">
     <div>
+      <router-link to="/" class="nav-link">
         <BaseButton icon="house" role="button" color="primary">Home</BaseButton>
+      </router-link>
+    </div>
+
+    <div v-if="isLoggedIn">
+      <router-link to="/conversations" class="nav-link">
+        <BaseButton icon="comments" role="button" color="primary">
+          Conversations
+        </BaseButton>
+      </router-link>
     </div>
   </div>
 
@@ -51,6 +73,10 @@ export default defineComponent ({
 
 p {
   color: var(--vt-c-white-soft);
+}
+
+.nav-link {
+  text-decoration: none;
 }
 
 </style>

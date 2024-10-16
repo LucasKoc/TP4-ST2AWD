@@ -115,3 +115,12 @@ Here's the result:
 
 ![Home page](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-15%20at%2023.56.26.png "Home page")
 ![Conversation page](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-15%20at%2023.56.38.png "Conversation page")
+
+### Exercise 7: add header navigation
+
+We updated in `BaseHeader.vue` the header with `router-link` pointing to Home (/) and ConversationsIndex (/conversation).
+
+Here's the result:
+
+![Updated Header](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-16%20at%2016.10.38.png "Updated Header")
+
