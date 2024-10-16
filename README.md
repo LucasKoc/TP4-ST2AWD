@@ -105,3 +105,13 @@ To add the vue-router dependency, we need to run the following command in the te
 npm install vue-router@4
 ```
 
+### Exercise 6: add / and /conversations routes
+
+We created the `src/router/index.ts` file and created routes for the Home and Conversation pages.
+Routes has been mounted in the `main.ts` file.
+Component Router-view has been added to the `App.vue` file.
+
+Here's the result:
+
+![Home page](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-15%20at%2023.56.26.png "Home page")
+![Conversation page](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-15%20at%2023.56.38.png "Conversation page")
