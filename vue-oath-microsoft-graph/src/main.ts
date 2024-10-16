@@ -9,11 +9,18 @@ import { faHouse, faUser, faCircleNotch, faComments } from '@fortawesome/free-so
 
 // Color Palette
 import './assets/css/base.css'
+import {initializeMsalInstance} from "@/lib/microsoftGraph";
 
-library.add(faHouse, faUser, faCircleNotch, faComments);
+async function bootstrap() {
+    library.add(faHouse, faUser, faCircleNotch, faComments);
 
-createApp(App).
-    component('font-awesome-icon', FontAwesomeIcon).
-    use(router).
-    use(store).
-    mount('#app')
+    await initializeMsalInstance();
+
+    createApp(App)
+        .use(store)
+        .use(router)
+        .component('font-awesome-icon', FontAwesomeIcon) // Register the component here
+        .mount('#app');
+}
+
+bootstrap();

@@ -1,4 +1,5 @@
 import * as msal from '@azure/msal-browser'
+import store from '@/store'
 
 /**
  * List the requested scopes (aka. the requested permissions)
@@ -19,6 +20,8 @@ const msalInstance = new msal.PublicClientApplication({
 export async function initializeMsalInstance() {
     try {
         await msalInstance.initialize();
+        const account = msalInstance.getActiveAccount();
+        if (account) store.commit('setUser', account);
     } catch (error) {
         console.error('Error initializing MSAL instance:', error);
         throw error;
@@ -30,5 +33,6 @@ export async function signInAndGetUser () {
 
     const authResult = await msalInstance.loginPopup(requestedScopes)
     msalInstance.setActiveAccount(authResult.account)
+    store.commit('setUser', authResult.account);
     return authResult.account
 }

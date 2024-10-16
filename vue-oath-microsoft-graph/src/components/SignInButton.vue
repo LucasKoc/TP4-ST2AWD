@@ -10,10 +10,6 @@ export default defineComponent({
     AsyncButton,
   },
   props: {
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
     color: {
       type: String,
       default: "primary",
@@ -30,6 +26,8 @@ export default defineComponent({
     const store = useStore();
     const user = computed(() => store.state.user);
 
+    const disabled = computed(() => user.value !== null);
+
     const handleSignIn = async () => {
       try {
         const newUser = await signInAndGetUser();
@@ -42,13 +40,14 @@ export default defineComponent({
     return {
       user,
       handleSignIn,
+      disabled,
     };
   },
 });
 </script>
 
 <template>
-  <async-button role="button" :color="color" @click="handleSignIn" :disabled="disabled" :icon="icon"> {{ user ? "Signed as " + user.username : "Sign in" }}</async-button>
+  <async-button role="button" :color="color" @click="handleSignIn" :disabled="this.disabled" :icon="icon"> {{ user ? "Signed as " + user.username : "Sign in" }}</async-button>
 </template>
 
 <style scoped>

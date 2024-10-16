@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import HomePage from '@/pages/HomePage.vue';
 import ConversationsIndexPage from '@/pages/ConversationsIndexPage.vue';
+import ConversationShowPage from '@/pages/ConversationShowPage.vue';
 import store from '@/store';
 
 const routes: Array<RouteRecordRaw> = [
@@ -13,6 +14,12 @@ const routes: Array<RouteRecordRaw> = [
         path: '/conversations',
         name: 'ConversationsIndex',
         component: ConversationsIndexPage,
+        meta: { requiresAuth: true },
+    },
+    {
+        path: '/conversations/:id',
+        name: 'ConversationShow',
+        component: ConversationShowPage,
         meta: { requiresAuth: true },
     },
 ];

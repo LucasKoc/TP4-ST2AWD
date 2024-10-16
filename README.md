@@ -1,4 +1,4 @@
-## TP3 - ST2AWD - Interface Development and Design (I2 - 2425S7)
+## TP4 - ST2AWD - Interface Development and Design (I2 - 2425S7)
 
 07-Oct-2024 | SE Promo 2026 | KOCOGLU Lucas
 
@@ -135,3 +135,12 @@ The performance difference between `<a>` and `<router-link>` is that `<router-li
 
 `src/router/index.ts` has been updated to add guards for authenticated routes.
 We ensure that the user is authenticated before accessing the Conversations page.
+
+### Exercise 9: add /conversations/:id route
+
+We added the route `/conversations/:id` to the router and created the `ConversationShowPage.vue` component.
+We added 3 example link to the conversation page in the `ConversationsIndex.vue` component.
+
+Here's the result:
+![ConversationsIndex Page](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-16%20at%2021.47.31.png "ConversationsIndex Page")
+![ConversationShow Page](https://raw.githubusercontent.com/LucasKoc/TP4-ST2AWD/refs/heads/main/Ressources/Screenshot%202024-10-16%20at%2021.48.24.png "ConversationShow Page")
